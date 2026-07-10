@@ -1,0 +1,16 @@
+# GitHub Pages publica somente o frontend estatico do quiz.
+/server/
+
+# Configuracoes e dados locais.
+.env
+.env.*
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+
+# Arquivos do sistema e dependencias locais.
+.DS_Store
+Thumbs.db
+node_modules/

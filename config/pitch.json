@@ -1,0 +1,111 @@
+{
+  "blocks": [
+    {
+      "type": "hero",
+      "headline": "O método completo para escalar seu negócio com previsibilidade",
+      "sub": "Pare de depender de sorte no tráfego. Tenha um funil que vende todos os dias — mesmo que você esteja começando do zero.",
+      "cta": { "label": "Quero garantir meu acesso", "url": "#oferta" }
+    },
+    {
+      "type": "problem",
+      "title": "Você reconhece alguma dessas situações?",
+      "text": "Você investe em anúncios mas as vendas não acompanham. Tenta de tudo, mas não consegue prever quanto vai faturar no mês. E quando aparece um resultado, ele não se sustenta. O problema quase nunca é esforço — é falta de um sistema."
+    },
+    {
+      "type": "solution",
+      "title": "A virada: um funil que trabalha por você",
+      "text": "Em vez de apostar em táticas soltas, você instala um processo testado: captura a pessoa certa, qualifica com perguntas inteligentes e entrega a oferta no momento de maior desejo. É isso que transforma tráfego em vendas previsíveis."
+    },
+    {
+      "type": "cta",
+      "label": "Quero esse sistema no meu negócio",
+      "url": "#oferta",
+      "note": "Acesso imediato e vitalício"
+    },
+    {
+      "type": "modules",
+      "title": "O que você vai receber",
+      "items": [
+        { "title": "Módulo 1 — Fundamentos", "desc": "A estrutura de um funil que converte, do início ao fim." },
+        { "title": "Módulo 2 — Oferta irresistível", "desc": "Como montar uma oferta que a pessoa não consegue recusar." },
+        { "title": "Módulo 3 — Tráfego que paga", "desc": "Campanhas que trazem o público certo pelo menor custo." },
+        { "title": "Módulo 4 — Escala com lucro", "desc": "Como crescer sem sacrificar a sua margem." }
+      ]
+    },
+    {
+      "type": "bonus",
+      "title": "Bônus exclusivos (por tempo limitado)",
+      "items": [
+        { "name": "Bônus 1 — Templates prontos", "value": "R$ 297", "desc": "Modelos de funil para copiar e colar." },
+        { "name": "Bônus 2 — Biblioteca de copy", "value": "R$ 197", "desc": "Headlines e CTAs validados em campanhas reais." },
+        { "name": "Bônus 3 — Comunidade", "value": "R$ 497", "desc": "Suporte e networking com outros alunos." }
+      ]
+    },
+    {
+      "type": "about",
+      "title": "Quem vai te guiar",
+      "text": "Sou [SEU NOME] e nos últimos anos ajudei centenas de negócios a estruturar funis que vendem de forma consistente. Tudo o que está aqui foi testado na prática — não é teoria.",
+      "image": ""
+    },
+    {
+      "type": "proof",
+      "title": "Resultados de quem já aplicou",
+      "items": [
+        { "name": "Mariana, infoprodutora", "text": "Em 60 dias saí de vendas aleatórias para um faturamento previsível. Mudou meu jogo." },
+        { "name": "Rafael, gestor de tráfego", "text": "Entrego funis melhores para meus clientes e cobro mais por isso." },
+        { "name": "Carla, mentora", "text": "Finalmente entendi onde estava perdendo dinheiro no meu funil." }
+      ]
+    },
+    {
+      "type": "cta",
+      "label": "Quero os mesmos resultados",
+      "url": "#oferta",
+      "note": "Garantia de 7 dias — risco zero"
+    },
+    {
+      "type": "objections",
+      "title": "Ainda na dúvida? Veja se é para você",
+      "items": [
+        { "q": "Funciona se eu estou começando do zero?", "a": "Sim. O conteúdo parte do básico e te leva passo a passo, mesmo sem experiência." },
+        { "q": "Preciso de ferramentas caras?", "a": "Não. O método usa o mínimo possível de ferramentas — a maioria gratuita ou que você já tem." },
+        { "q": "E se eu não tiver tempo?", "a": "As aulas são diretas e você aplica em paralelo. Em poucas horas já dá pra montar o primeiro funil." }
+      ]
+    },
+    {
+      "type": "guarantee",
+      "title": "Garantia incondicional de 7 dias",
+      "days": 7,
+      "text": "Acesse tudo, aplique e, se em 7 dias você sentir que não é para você, devolvemos 100% do valor. O risco é todo nosso."
+    },
+    {
+      "type": "offer",
+      "title": "Comece hoje mesmo",
+      "priceFrom": "De R$ 497",
+      "price": "R$ 197",
+      "installments": "ou 12x de R$ 19,90",
+      "cta": "Quero garantir minha vaga agora",
+      "url": "#",
+      "scarcity": "Vagas limitadas nesta condição especial."
+    },
+    {
+      "type": "faq",
+      "title": "Perguntas frequentes",
+      "items": [
+        { "q": "Como recebo o acesso?", "a": "Imediatamente após a confirmação do pagamento, por e-mail." },
+        { "q": "Por quanto tempo tenho acesso?", "a": "Acesso vitalício, incluindo as atualizações futuras." },
+        { "q": "Posso pagar no cartão?", "a": "Sim, com parcelamento, além de Pix e boleto." }
+      ]
+    },
+    {
+      "type": "cta",
+      "label": "Garantir minha vaga",
+      "url": "#oferta",
+      "note": "Última chamada"
+    }
+  ],
+  "floatingCta": {
+    "enabled": true,
+    "label": "Garantir minha vaga",
+    "url": "#oferta"
+  }
+}

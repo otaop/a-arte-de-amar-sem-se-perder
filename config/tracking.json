@@ -1,0 +1,16 @@
+{
+  "endpoint": "./server/api/event.php",
+  "captureUtms": true,
+  "external": {
+    "metaPixelId": "",
+    "ga4Id": "",
+    "googleAdsId": "",
+    "googleAdsLeadLabel": "",
+    "gtmId": ""
+  },
+  "metaEvents": {
+    "quiz_started": "ViewContent",
+    "lead_submitted": "Lead",
+    "result_viewed": "CompleteRegistration"
+  }
+}

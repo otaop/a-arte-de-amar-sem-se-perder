@@ -1,0 +1,28 @@
+{
+  "name": "Alessandra Vick",
+  "logo": "",
+  "logoHeight": "30px",
+  "favicon": "",
+  "font": "Public Sans, system-ui, sans-serif",
+  "fontHeading": "Familjen Grotesk, system-ui, sans-serif",
+  "fontImport": "https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap",
+  "colors": {
+    "primary": "#7551A3",
+    "primaryHover": "#5E3F88",
+    "accent": "#FF8659",
+    "bg": "#FBF5EA",
+    "surface": "#FFFDF9",
+    "border": "#E7DDD0",
+    "text": "#201C16",
+    "muted": "#5B5346"
+  },
+  "radius": "8px",
+  "background": {
+    "type": "gradient",
+    "value": "radial-gradient(48% 42% at 8% 10%, rgba(255, 134, 89, .55), transparent 70%), radial-gradient(38% 40% at 82% 6%, rgba(240, 185, 74, .50), transparent 70%), radial-gradient(46% 50% at 90% 78%, rgba(185, 139, 214, .42), transparent 70%), radial-gradient(55% 60% at 6% 92%, rgba(31, 102, 83, .16), transparent 72%), #FBF5EA"
+  },
+  "layout": {
+    "maxWidth": "1320px",
+    "style": "organic"
+  }
+}

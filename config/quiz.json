@@ -1,0 +1,180 @@
+{
+  "settings": {
+    "showProgress": true,
+    "allowBack": true,
+    "autoAdvanceSingle": true,
+    "scoring": false
+  },
+  "steps": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "subhead": "Vai levar só alguns minutinhos.",
+      "headline": "Antes do nosso encontro, quero te entender de verdade. São poucas perguntas e as suas respostas vão moldar o que eu vou trazer ao vivo. Pode ser sincera, isso fica entre a gente.",
+      "cta": "Começar"
+    },
+    {
+      "id": "nome_email",
+      "type": "lead",
+      "headline": "Antes de começar",
+      "subhead": "Seu nome e e-mail ajudam a organizar as respostas.",
+      "cta": "Continuar",
+      "fields": [
+        { "name": "nome", "label": "Nome", "type": "text", "required": true, "placeholder": "Seu nome" },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "placeholder": "seuemail@exemplo.com" }
+      ],
+      "consentText": "Autorizo o uso das minhas respostas para a preparação do encontro, conforme a Política de Privacidade."
+    },
+    {
+      "id": "momento_atual",
+      "type": "single",
+      "spin": "segmentation",
+      "question": "Qual opção descreve melhor o seu momento hoje?",
+      "options": [
+        { "label": "Solteira", "value": "solteira", "emoji": "♡" },
+        { "label": "Conhecendo alguém", "value": "conhecendo", "emoji": "♡" },
+        { "label": "Namorando", "value": "namorando", "emoji": "♡" },
+        { "label": "Casada ou união estável", "value": "casada", "emoji": "♡" },
+        { "label": "Separada ou divorciada", "value": "separada", "emoji": "♡" },
+        { "label": "Prefiro não dizer", "value": "prefiro_nao_dizer", "emoji": "♡" }
+      ]
+    },
+    {
+      "id": "vida_amorosa",
+      "type": "single",
+      "spin": "situation",
+      "question": "Como você descreveria a sua vida amorosa hoje?",
+      "options": [
+        { "label": "Estou realizada e em paz", "value": "realizada", "emoji": "♡" },
+        { "label": "Está boa, mas sinto que falta algo", "value": "falta_algo", "emoji": "♡" },
+        { "label": "Estou confusa, sem saber o que fazer", "value": "confusa", "emoji": "♡" },
+        { "label": "Estou cansada, magoada ou me sentindo sozinha", "value": "cansada", "emoji": "♡" },
+        { "label": "Estou recomeçando, com medo de repetir os mesmos erros", "value": "recomecando", "emoji": "♡" }
+      ]
+    },
+    {
+      "id": "tempo_sentimento",
+      "type": "single",
+      "spin": "situation",
+      "question": "Há quanto tempo você se sente assim?",
+      "options": [
+        { "label": "Começou agora", "value": "agora", "emoji": "♡" },
+        { "label": "Faz alguns meses", "value": "meses", "emoji": "♡" },
+        { "label": "Faz mais de um ano", "value": "mais_de_um_ano", "emoji": "♡" },
+        { "label": "Faz tanto tempo que já achei que era normal", "value": "normalizado", "emoji": "♡" }
+      ]
+    },
+    {
+      "id": "maior_dificuldade",
+      "type": "multi",
+      "spin": "problem",
+      "question": "Qual é a sua maior dificuldade nos relacionamentos hoje?",
+      "help": "Marque até 2.",
+      "maxSelections": 2,
+      "options": [
+        { "label": "Tenho dificuldade de dizer o que sinto", "value": "dizer_o_que_sinto", "emoji": "♡" },
+        { "label": "Aponto o que me incomoda e sempre vira briga", "value": "vira_briga", "emoji": "♡" },
+        { "label": "Sinto que faço tudo sozinha, falta reciprocidade", "value": "falta_reciprocidade", "emoji": "♡" },
+        { "label": "Me anulo pra manter a paz", "value": "me_anulo", "emoji": "♡" },
+        { "label": "Não consigo colocar limites nem dizer não", "value": "sem_limites", "emoji": "♡" },
+        { "label": "Aceito menos do que mereço, com medo de ficar sozinha", "value": "aceito_menos", "emoji": "♡" },
+        { "label": "A relação esfriou, virou rotina", "value": "rotina", "emoji": "♡" },
+        { "label": "Repito sempre o mesmo padrão, atraio o mesmo tipo de pessoa", "value": "repito_padrao", "emoji": "♡" },
+        { "label": "Não estou vivendo nenhuma dessas", "value": "nenhuma", "emoji": "♡", "exclusive": true }
+      ]
+    },
+    {
+      "id": "conflito",
+      "type": "single",
+      "spin": "problem",
+      "question": "Quando surge um conflito, o que você mais faz?",
+      "options": [
+        { "label": "Guardo tudo pra mim", "value": "guardo", "emoji": "♡" },
+        { "label": "Explodo depois de acumular", "value": "explodo", "emoji": "♡" },
+        { "label": "Evito o assunto", "value": "evito", "emoji": "♡" },
+        { "label": "Tento conversar mas não sou ouvida", "value": "nao_ouvida", "emoji": "♡" },
+        { "label": "Converso com calma e resolvo", "value": "converso", "emoji": "♡" }
+      ]
+    },
+    {
+      "id": "culpa_priorizar",
+      "type": "single",
+      "spin": "problem",
+      "question": "Você sente culpa quando prioriza você mesma?",
+      "options": [
+        { "label": "Sempre, me sinto egoísta", "value": "sempre", "emoji": "♡" },
+        { "label": "Quase sempre", "value": "quase_sempre", "emoji": "♡" },
+        { "label": "Às vezes", "value": "as_vezes", "emoji": "♡" },
+        { "label": "Quase nunca", "value": "quase_nunca", "emoji": "♡" }
+      ]
+    },
+    {
+      "id": "conquistar",
+      "type": "multi",
+      "spin": "need",
+      "question": "O que você mais quer conquistar?",
+      "help": "Marque até 2.",
+      "maxSelections": 2,
+      "options": [
+        { "label": "Me comunicar sem que vire briga", "value": "comunicar", "emoji": "♡" },
+        { "label": "Parar de me anular e me colocar em primeiro lugar às vezes", "value": "nao_me_anular", "emoji": "♡" },
+        { "label": "Reacender a conexão com meu parceiro", "value": "reacender", "emoji": "♡" },
+        { "label": "Colocar limites sem sentir culpa", "value": "limites", "emoji": "♡" },
+        { "label": "Entender por que repito os mesmos padrões", "value": "entender_padroes", "emoji": "♡" },
+        { "label": "Me amar mais e me sentir suficiente", "value": "me_amar", "emoji": "♡" },
+        { "label": "Ter mais paz e leveza no amor", "value": "paz_e_leveza", "emoji": "♡" }
+      ]
+    },
+    {
+      "id": "incomodo",
+      "type": "slider",
+      "spin": "implication",
+      "question": "O quanto essa dificuldade te incomoda hoje?",
+      "min": 1,
+      "max": 5,
+      "minLabel": "Dá pra levar",
+      "maxLabel": "Está tirando a minha paz",
+      "key": "incomodo",
+      "showStages": true
+    },
+    {
+      "id": "resolver_uma_coisa",
+      "type": "textarea",
+      "spin": "needpayoff",
+      "question": "Se eu pudesse te ajudar a resolver UMA coisa na forma como você ama ou se relaciona, qual seria?",
+      "placeholder": "Escreva aqui",
+      "rows": 7,
+      "maxLength": 1200
+    },
+    {
+      "id": "pergunta_evento",
+      "type": "textarea",
+      "spin": "needpayoff",
+      "question": "Qual pergunta você gostaria que eu respondesse ao vivo no evento?",
+      "placeholder": "Escreva aqui",
+      "rows": 7,
+      "maxLength": 1200
+    },
+    {
+      "id": "investimento_anterior",
+      "type": "multi",
+      "spin": "needpayoff",
+      "question": "Você já investiu em algo pra melhorar sua vida amorosa ou emocional?",
+      "help": "Marque tudo que já fez.",
+      "options": [
+        { "label": "Terapia", "value": "terapia", "emoji": "♡" },
+        { "label": "Curso ou ebook", "value": "curso_ebook", "emoji": "♡" },
+        { "label": "Livros", "value": "livros", "emoji": "♡" },
+        { "label": "Mentoria ou acompanhamento", "value": "mentoria", "emoji": "♡" },
+        { "label": "Ainda não investi em nada", "value": "nada", "emoji": "♡", "exclusive": true }
+      ]
+    },
+    {
+      "id": "result",
+      "type": "result",
+      "routing": { "default": "research" },
+      "showLeadGreeting": false,
+      "ending": { "type": "none" }
+    }
+  ]
+}

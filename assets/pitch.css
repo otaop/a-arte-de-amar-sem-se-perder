@@ -1,0 +1,216 @@
+/* ==========================================================================
+   pitch.css — página de venda (pitch)
+   Reutiliza as variáveis de marca definidas por brand.js (--fq-*).
+   Design: ver skills/_shared/pitch-design.md (emil-design-eng + impeccable + ui-ux-pro-max).
+   ========================================================================== */
+
+:root {
+  --fq-primary: #5B5BD6;
+  --fq-primary-hover: #4A4AC4;
+  --fq-accent: #22C55E;
+  --fq-bg: #FFFFFF;
+  --fq-surface: #F6F6FB;
+  --fq-border: #E6E6EF;
+  --fq-text: #18181B;
+  --fq-muted: #71717A;
+  --fq-radius: 16px;
+  --fq-font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fq-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* { box-sizing: border-box; }
+
+body.pitch-body {
+  margin: 0;
+  font-family: var(--fq-font);
+  color: var(--fq-text);
+  background: var(--fq-bg);
+  padding-bottom: 92px; /* espaço para a barra fixa */
+  -webkit-font-smoothing: antialiased;
+}
+
+#pitch-root { width: 100%; }
+
+.pitch-logo { text-align: center; padding: 24px 16px 0; }
+.pitch-logo img { height: 30px; }
+
+/* ---- Seções ------------------------------------------------------------ */
+.pitch-section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 22px;
+  text-align: center;
+}
+.pitch-section:nth-of-type(even) { background: var(--fq-surface); max-width: none; }
+.pitch-section:nth-of-type(even) > * { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+.pitch-h1 {
+  font-family: var(--fq-font-heading, var(--fq-font));
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance;
+  margin: 8px 0 18px;
+}
+.pitch-h2 {
+  font-family: var(--fq-font-heading, var(--fq-font));
+  font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+  line-height: 1.22; letter-spacing: -0.01em; text-wrap: balance;
+  margin: 0 0 18px;
+}
+.pitch-p, .pitch-sub {
+  font-size: 1.08rem; line-height: 1.65; color: var(--fq-muted);
+  margin: 0 auto 24px; max-width: 60ch; text-wrap: pretty;
+}
+.pitch-sub { font-size: clamp(1.1rem, 2.2vw, 1.22rem); color: color-mix(in srgb, var(--fq-text) 70%, var(--fq-muted)); }
+
+/* ---- Hero -------------------------------------------------------------- */
+.pitch-hero { padding-top: 40px; padding-bottom: 60px; }
+.pitch-hero-bullets {
+  list-style: none; margin: 0 auto 26px; padding: 0; max-width: 60ch;
+}
+.pitch-hero-bullet {
+  margin: 0 0 12px; font-size: 1.05rem; line-height: 1.45; color: var(--fq-text);
+}
+.pitch-hero-bullet::before {
+  content: "✓ "; font-weight: 800; color: var(--fq-accent);
+}
+.pitch-hero-badge {
+  display: inline-block; margin: 20px auto 0;
+  font-size: 0.92rem; font-weight: 600;
+  color: color-mix(in srgb, var(--fq-text) 75%, var(--fq-muted));
+  background: color-mix(in srgb, var(--fq-accent) 12%, transparent);
+  padding: 8px 18px; border-radius: 999px;
+}
+
+/* ---- CTA --------------------------------------------------------------- */
+.pitch-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; /* alvo de toque confortável */
+  background: var(--fq-accent);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 15px 32px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+  transition: transform 160ms var(--fq-ease-out), filter 160ms ease, box-shadow 200ms ease;
+}
+.pitch-cta:active { transform: scale(0.97); }
+.pitch-cta:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--fq-primary) 55%, transparent);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pitch-cta:hover {
+    filter: brightness(1.03);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px color-mix(in srgb, var(--fq-accent) 32%, transparent);
+  }
+}
+.pitch-cta--lg { padding: 18px 40px; font-size: 1.14rem; min-height: 58px; }
+.pitch-ctaband { padding: 40px 22px; }
+.pitch-note { font-size: 0.9rem; color: var(--fq-muted); margin: 12px 0 0; }
+
+/* ---- Grids (módulos, bônus, prova) ------------------------------------- */
+.pitch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  text-align: left;
+  margin-top: 12px;
+}
+.pitch-card {
+  background: var(--fq-bg);
+  border: 1px solid var(--fq-border);
+  border-radius: var(--fq-radius);
+  padding: 22px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.04);
+}
+@media (hover: hover) and (pointer: fine) {
+  .pitch-card { transition: transform 220ms var(--fq-ease-out), box-shadow 220ms ease; }
+  .pitch-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.08); }
+}
+.pitch-card-title { font-size: 1.08rem; margin: 0 0 8px; }
+.pitch-card-text { font-size: 0.98rem; color: var(--fq-muted); line-height: 1.55; margin: 0; }
+.pitch-card--bonus { border-color: color-mix(in srgb, var(--fq-accent) 40%, var(--fq-border)); }
+.pitch-bonus-value {
+  display: inline-block; font-weight: 700; color: var(--fq-accent);
+  font-size: 0.9rem; margin-bottom: 8px;
+}
+.pitch-proof-name { display: block; margin-top: 12px; font-weight: 600; font-size: 0.92rem; }
+
+/* ---- Depoimento (avatar de iniciais, sem foto aleatória) --------------- */
+.pitch-card--depo .pitch-proof-name { margin-top: 0; }
+.pitch-depo-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.pitch-depo-avatar {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; color: #fff;
+  background: linear-gradient(135deg, var(--fq-primary), var(--fq-primary-hover));
+}
+
+/* ---- Sobre ------------------------------------------------------------- */
+.pitch-about { display: flex; gap: 28px; align-items: center; text-align: left; flex-wrap: wrap; justify-content: center; }
+.pitch-about-img { width: 200px; height: 200px; object-fit: cover; border-radius: 20px; }
+.pitch-about-ph {
+  width: 200px; height: 200px; border-radius: 20px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 4rem;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--fq-primary) 18%, var(--fq-surface)), color-mix(in srgb, var(--fq-accent) 14%, var(--fq-surface)));
+}
+.pitch-about-text { flex: 1; min-width: 260px; }
+.pitch-about-text .pitch-p { margin-left: 0; }
+
+/* ---- FAQ / Objeções ---------------------------------------------------- */
+.pitch-faq-item { text-align: left; max-width: 640px; margin: 0 auto 16px; padding-bottom: 16px; border-bottom: 1px solid var(--fq-border); }
+.pitch-faq-q { font-size: 1.05rem; margin: 0 0 6px; }
+.pitch-faq-a { font-size: 0.98rem; color: var(--fq-muted); line-height: 1.6; margin: 0; text-wrap: pretty; }
+
+/* ---- Garantia ---------------------------------------------------------- */
+.pitch-seal {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 90px; height: 90px; border-radius: 50%;
+  background: color-mix(in srgb, var(--fq-accent) 14%, transparent);
+  color: var(--fq-accent); font-weight: 800; font-size: 1.05rem;
+  margin: 0 auto 18px; border: 2px dashed var(--fq-accent);
+}
+
+/* ---- Oferta ------------------------------------------------------------ */
+.pitch-offer {
+  background: linear-gradient(165deg, var(--fq-surface), color-mix(in srgb, var(--fq-accent) 9%, var(--fq-surface)));
+  border-radius: 0;
+}
+.pitch-pricefrom { display: block; color: var(--fq-muted); text-decoration: line-through; font-size: 1rem; }
+.pitch-price { font-size: clamp(2.6rem, 7vw, 3.4rem); font-weight: 800; color: var(--fq-text); line-height: 1.05; margin: 4px 0; letter-spacing: -0.02em; }
+.pitch-install { color: var(--fq-muted); margin: 0 0 22px; }
+.pitch-scarcity { color: var(--fq-primary); font-weight: 600; font-size: 0.95rem; margin: 16px 0 0; }
+
+/* ---- Barra fixa flutuante ---------------------------------------------- */
+.pitch-floating {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  background: color-mix(in srgb, var(--fq-bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--fq-border);
+  padding: 12px 16px;
+  text-align: center;
+  box-shadow: 0 -6px 24px rgba(0,0,0,0.06);
+  z-index: 50;
+}
+.pitch-cta--bar { width: 100%; max-width: 520px; }
+
+/* ---- Reveal ao rolar (com stagger; a11y desliga em reduced-motion) ----- */
+.pitch-reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--fq-ease-out), transform .6s var(--fq-ease-out); }
+.pitch-reveal.is-visible { opacity: 1; transform: none; }
+.pitch-reveal .pitch-card { opacity: 0; transform: translateY(10px); transition: opacity .45s var(--fq-ease-out), transform .45s var(--fq-ease-out); }
+.pitch-reveal.is-visible .pitch-card { opacity: 1; transform: none; }
+.pitch-reveal.is-visible .pitch-card:nth-child(1) { transition-delay: 40ms; }
+.pitch-reveal.is-visible .pitch-card:nth-child(2) { transition-delay: 90ms; }
+.pitch-reveal.is-visible .pitch-card:nth-child(3) { transition-delay: 140ms; }
+.pitch-reveal.is-visible .pitch-card:nth-child(4) { transition-delay: 190ms; }
+@media (prefers-reduced-motion: reduce) {
+  .pitch-reveal, .pitch-reveal .pitch-card { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 600px) {
+  .pitch-section { padding: 40px 18px; }
+  .pitch-hero { padding-top: 28px; }
+}
