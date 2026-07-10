@@ -1,9 +1,12 @@
-# GitHub Pages publica somente o frontend estatico do quiz.
-/server/
-
-# Configuracoes e dados locais.
+# Configuracoes e dados de execucao locais.
 .env
 .env.*
+/server/config.php
+/server/database/*.sqlite
+/server/database/*.sqlite3
+/server/database/*.sqlite-wal
+/server/database/*.sqlite-shm
+/server/database/*.db
 *.sqlite
 *.sqlite3
 *.sqlite-wal

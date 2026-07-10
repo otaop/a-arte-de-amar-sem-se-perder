@@ -48,10 +48,19 @@ Peça à IA para editar **apenas** os arquivos de `config/`. Exemplo de pedido:
 - **Dashboard**: retenção pergunta a pergunta, abandono, conversão.
 - **Deploy**: ver `docs/tecnico/deploy-servidor.md`.
 
-## GitHub Pages
+## Publicação no DigitalOcean
 
-Este repositório publica o frontend estático do quiz no GitHub Pages. O diretório
-`server/` fica fora do repositório: GitHub Pages não executa PHP, portanto a coleta
-de respostas e o dashboard precisam continuar em um servidor PHP próprio. Antes do
-primeiro envio ao público, configure em `config/tracking.json` a URL HTTPS desse
-servidor para receber os eventos.
+Este repositório versiona o quiz completo: o frontend estático e o backend PHP em
+`server/`. Ele pode ser publicado em um Droplet com PHP ou Docker, atrás de Caddy
+ou Nginx.
+
+As configurações sensíveis e os dados de execução continuam fora do Git:
+
+- `server/config.php` (senha do dashboard e origem permitida);
+- `server/database/` (respostas armazenadas no SQLite);
+- arquivos `.env`.
+
+Ao hospedar o frontend e o backend no mesmo domínio, mantenha o endpoint relativo
+em `config/tracking.json`. Assim, o quiz envia os eventos para
+`./server/api/event.php` no próprio domínio, e o painel fica em
+`/server/dashboard/`.
