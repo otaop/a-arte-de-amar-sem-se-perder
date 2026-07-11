@@ -19,6 +19,9 @@ const state = {
   index: 0, answers: {}, values: {}, score: 0, scoreByStep: {}, history: [],
 };
 
+const assetVersion = new URL(import.meta.url).searchParams.get("v");
+const versionedAsset = (path) => assetVersion ? path + "?v=" + encodeURIComponent(assetVersion) : path;
+
 // ---------------------------------------------------------------------------
 //  Boot
 // ---------------------------------------------------------------------------
@@ -34,10 +37,10 @@ async function boot() {
   }
   try {
     const [brand, quiz, offers, tracking] = await Promise.all([
-      loadJSON("./config/brand.json"),
-      loadJSON("./config/quiz.json"),
-      loadJSON("./config/offers.json"),
-      loadJSON("./config/tracking.json"),
+      loadJSON(versionedAsset("./config/brand.json")),
+      loadJSON(versionedAsset("./config/quiz.json")),
+      loadJSON(versionedAsset("./config/offers.json")),
+      loadJSON(versionedAsset("./config/tracking.json")),
     ]);
     state.brand = brand; state.quiz = quiz; state.offers = offers;
     state.tracker = new Tracker(tracking);
