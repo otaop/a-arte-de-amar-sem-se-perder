@@ -317,7 +317,7 @@ body {
 [data-fq-layout="organic"] .fq-option {
   min-height: 86px; border-radius: 8px; border: 1px solid rgba(32, 28, 22, .10);
   background: #FFFDF9; padding: 20px 22px; opacity: .9;
-  font-size: clamp(1.06rem, 1rem + .22vw, 1.2rem); line-height: 1.35; font-weight: 600;
+  font-size: clamp(1.06rem, 1rem + .22vw, 1.2rem); line-height: 1.35; font-weight: 500;
   box-shadow: 0 14px 28px -20px rgba(105, 72, 156, .72);
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease, background .18s ease, color .18s ease, opacity .18s ease;
 }
