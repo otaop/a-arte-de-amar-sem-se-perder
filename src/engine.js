@@ -612,10 +612,44 @@ function optionEmoji(value) {
 function questionHeader(step, card) {
   const copy = el("div", "fq-question-copy");
   if (step.spin) copy.appendChild(el("span", "fq-spin fq-spin--" + step.spin, spinLabel(step.spin)));
-  copy.appendChild(el("h2", "fq-question", step.question));
+  copy.appendChild(questionTitle(step));
   if (step.help) copy.appendChild(el("p", "fq-help", step.help));
   if (step.image) copy.appendChild(stepImage(step.image));
   card.appendChild(copy);
+}
+
+// Destaca trechos configurados sem interpretar a copy como HTML.
+function questionTitle(step) {
+  const title = el("h2", "fq-question");
+  const question = String(step.question || "");
+  const allowedTones = ["peach", "sun", "lilac", "sage"];
+  const allowedStyles = ["marker", "box"];
+  const highlights = (Array.isArray(step.highlights) ? step.highlights : [])
+    .map((highlight) => {
+      const text = typeof highlight === "string" ? highlight : highlight && highlight.text;
+      const start = text ? question.toLocaleLowerCase("pt-BR").indexOf(String(text).toLocaleLowerCase("pt-BR")) : -1;
+      if (start < 0) return null;
+      return {
+        start,
+        end: start + String(text).length,
+        tone: allowedTones.includes(highlight.tone) ? highlight.tone : "sun",
+        style: allowedStyles.includes(highlight.style) ? highlight.style : "marker",
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.start - b.start);
+
+  let cursor = 0;
+  for (const highlight of highlights) {
+    if (highlight.start < cursor) continue;
+    title.append(document.createTextNode(question.slice(cursor, highlight.start)));
+    const marked = el("span", "fq-highlight fq-highlight--" + highlight.style + " fq-highlight--" + highlight.tone);
+    marked.textContent = question.slice(highlight.start, highlight.end);
+    title.append(marked);
+    cursor = highlight.end;
+  }
+  title.append(document.createTextNode(question.slice(cursor)));
+  return title;
 }
 
 // Imagem de apoio em um passo (pergunta, slider, diagnóstico). Caminho relativo em funil/assets/.

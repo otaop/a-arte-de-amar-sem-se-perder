@@ -30,6 +30,7 @@
       "type": "single",
       "spin": "segmentation",
       "question": "Qual opção descreve melhor o seu momento hoje?",
+      "highlights": [{ "text": "seu momento hoje", "tone": "peach", "style": "marker" }],
       "options": [
         { "label": "Solteira", "value": "solteira", "emoji": "♡" },
         { "label": "Conhecendo alguém", "value": "conhecendo", "emoji": "♡" },
@@ -44,6 +45,7 @@
       "type": "single",
       "spin": "situation",
       "question": "Como você descreveria a sua vida amorosa hoje?",
+      "highlights": [{ "text": "vida amorosa hoje", "tone": "lilac", "style": "box" }],
       "options": [
         { "label": "Estou realizada e em paz", "value": "realizada", "emoji": "♡" },
         { "label": "Está boa, mas sinto que falta algo", "value": "falta_algo", "emoji": "♡" },
@@ -57,6 +59,7 @@
       "type": "single",
       "spin": "situation",
       "question": "Há quanto tempo você se sente assim?",
+      "highlights": [{ "text": "Há quanto tempo", "tone": "sun", "style": "marker" }],
       "options": [
         { "label": "Começou agora", "value": "agora", "emoji": "♡" },
         { "label": "Faz alguns meses", "value": "meses", "emoji": "♡" },
@@ -69,6 +72,7 @@
       "type": "multi",
       "spin": "problem",
       "question": "Qual é a sua maior dificuldade nos relacionamentos hoje?",
+      "highlights": [{ "text": "maior dificuldade", "tone": "peach", "style": "box" }],
       "help": "Marque até 2.",
       "maxSelections": 2,
       "options": [
@@ -88,6 +92,7 @@
       "type": "single",
       "spin": "problem",
       "question": "Quando surge um conflito, o que você mais faz?",
+      "highlights": [{ "text": "surge um conflito", "tone": "lilac", "style": "marker" }],
       "options": [
         { "label": "Guardo tudo pra mim", "value": "guardo", "emoji": "♡" },
         { "label": "Explodo depois de acumular", "value": "explodo", "emoji": "♡" },
@@ -101,6 +106,7 @@
       "type": "single",
       "spin": "problem",
       "question": "Você sente culpa quando prioriza você mesma?",
+      "highlights": [{ "text": "sente culpa", "tone": "peach", "style": "marker" }],
       "options": [
         { "label": "Sempre, me sinto egoísta", "value": "sempre", "emoji": "♡" },
         { "label": "Quase sempre", "value": "quase_sempre", "emoji": "♡" },
@@ -113,6 +119,7 @@
       "type": "multi",
       "spin": "need",
       "question": "O que você mais quer conquistar?",
+      "highlights": [{ "text": "mais quer conquistar", "tone": "sage", "style": "marker" }],
       "help": "Marque até 2.",
       "maxSelections": 2,
       "options": [
@@ -130,6 +137,7 @@
       "type": "slider",
       "spin": "implication",
       "question": "O quanto essa dificuldade te incomoda hoje?",
+      "highlights": [{ "text": "te incomoda hoje", "tone": "peach", "style": "box" }],
       "min": 1,
       "max": 5,
       "minLabel": "Dá pra levar",
@@ -142,6 +150,7 @@
       "type": "textarea",
       "spin": "needpayoff",
       "question": "Se eu pudesse te ajudar a resolver UMA coisa na forma como você ama ou se relaciona, qual seria?",
+      "highlights": [{ "text": "UMA coisa", "tone": "sun", "style": "box" }],
       "placeholder": "Escreva aqui",
       "rows": 7,
       "maxLength": 1200
@@ -151,6 +160,7 @@
       "type": "textarea",
       "spin": "needpayoff",
       "question": "Qual pergunta você gostaria que eu respondesse ao vivo no evento?",
+      "highlights": [{ "text": "ao vivo no evento", "tone": "lilac", "style": "marker" }],
       "placeholder": "Escreva aqui",
       "rows": 7,
       "maxLength": 1200
@@ -160,6 +170,7 @@
       "type": "multi",
       "spin": "needpayoff",
       "question": "Você já investiu em algo pra melhorar sua vida amorosa ou emocional?",
+      "highlights": [{ "text": "já investiu", "tone": "sage", "style": "box" }],
       "help": "Marque tudo que já fez.",
       "options": [
         { "label": "Terapia", "value": "terapia", "emoji": "♡" },
