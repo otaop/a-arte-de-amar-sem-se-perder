@@ -9,8 +9,8 @@
     {
       "id": "intro",
       "type": "intro",
-      "subhead": "Vai levar só alguns minutinhos.",
-      "headline": "Antes do nosso encontro, quero te entender de verdade. São poucas perguntas e as suas respostas vão moldar o que eu vou trazer ao vivo. Pode ser sincera, isso fica entre a gente.",
+      "subhead": "Responda com sinceridade. Este é um espaço seguro e sem julgamentos.",
+      "headline": "Preparei algumas perguntas rápidas para entender como você está vivendo neste momento. Suas respostas vão me ajudar a preparar um encontro que realmente faça sentido para você.",
       "cta": "Começar"
     },
     {
@@ -142,6 +142,13 @@
       "max": 5,
       "minLabel": "Dá pra levar",
       "maxLabel": "Está tirando a minha paz",
+      "indicatorLabels": {
+        "1": "Dá pra levar",
+        "2": "Está começando a pesar",
+        "3": "Está mexendo comigo",
+        "4": "Está ficando difícil",
+        "5": "Está tirando a minha paz"
+      },
       "key": "incomodo",
       "showStages": true
     },

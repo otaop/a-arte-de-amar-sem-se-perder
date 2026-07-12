@@ -348,6 +348,8 @@ function renderSlider(step, card) {
   input.value = step.default != null ? step.default : Math.round(((+input.min) + (+input.max)) / 2);
   input.className = "fq-slider";
   const valueTag = el("div", "fq-slider-value", input.value);
+  const indicatorLabels = step.indicatorLabels && typeof step.indicatorLabels === "object" ? step.indicatorLabels : null;
+  const indicator = indicatorLabels ? el("div", "fq-slider-indicator") : null;
   const stages = el("div", "fq-slider-stages");
   const stageButtons = [];
   const min = Number(input.min);
@@ -369,18 +371,25 @@ function renderSlider(step, card) {
     const pct = Math.round(((+input.value - +input.min) / ((+input.max - +input.min) || 1)) * 100);
     input.style.setProperty("--fq-slider-pct", pct + "%"); // CSS desenha o gradiente fraco→intenso
     valueTag.textContent = input.value;
+    if (indicator) {
+      indicator.textContent = indicatorLabels[String(input.value)] || String(input.value);
+      indicator.dataset.level = String(input.value);
+    }
     for (const item of stageButtons) item.stage.classList.toggle("is-active", item.value === Number(input.value));
   };
   input.oninput = paint;
-  const labels = el("div", "fq-slider-labels");
-  labels.appendChild(el("span", "", step.minLabel || String(input.min)));
-  labels.appendChild(el("span", "", step.maxLabel || String(input.max)));
   wrap.appendChild(valueTag);
+  if (indicator) wrap.appendChild(indicator);
   const control = el("div", "fq-slider-control");
   control.appendChild(input);
   if (stageButtons.length) control.appendChild(stages);
   wrap.appendChild(control);
-  wrap.appendChild(labels);
+  if (!indicator) {
+    const labels = el("div", "fq-slider-labels");
+    labels.appendChild(el("span", "", step.minLabel || String(input.min)));
+    labels.appendChild(el("span", "", step.maxLabel || String(input.max)));
+    wrap.appendChild(labels);
+  }
   card.appendChild(wrap);
   paint();
 
