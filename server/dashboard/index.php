@@ -31,7 +31,7 @@ if ($auth && empty($_SESSION['fb_csrf'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FunilBox · Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css?v=11" />
+  <link rel="stylesheet" href="dashboard.css?v=12" />
 </head>
 <body>
 <?php if (!$auth): ?>
@@ -138,8 +138,25 @@ if ($auth && empty($_SESSION['fb_csrf'])) {
       <div class="modulo-head"><h2>Eventos recentes</h2></div>
       <div id="recentes" class="recentes-2col"></div>
     </section>
+
+    <div class="modal" id="delete-modal" hidden>
+      <button class="modal-backdrop" type="button" data-delete-cancel aria-label="Cancelar exclusão"></button>
+      <form class="modal-dialog" id="delete-form" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+        <button class="modal-close" type="button" data-delete-cancel aria-label="Fechar">×</button>
+        <p class="modal-eyebrow">Ação permanente</p>
+        <h2 id="delete-title">Excluir registro?</h2>
+        <p>Você está prestes a apagar <strong id="delete-lead-name"></strong>.</p>
+        <p class="muted">O contato, as respostas e todos os eventos desta sessão serão removidos.</p>
+        <label for="delete-confirmation">Digite <strong>delete</strong> para confirmar</label>
+        <input id="delete-confirmation" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" />
+        <div class="modal-actions">
+          <button class="btn-modal-cancel" type="button" data-delete-cancel>Cancelar</button>
+          <button class="btn-modal-delete" id="delete-submit" type="submit" disabled>Excluir registro</button>
+        </div>
+      </form>
+    </div>
   </main>
-  <script src="dashboard.js?v=13"></script>
+  <script src="dashboard.js?v=14"></script>
 <?php endif; ?>
 </body>
 </html>

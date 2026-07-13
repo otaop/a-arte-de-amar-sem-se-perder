@@ -181,3 +181,15 @@ a{color:var(--primary)}
 .td-data{color:var(--muted);font-family:ui-monospace,monospace;font-size:.82rem}
 .btn-excluir{border:1px solid color-mix(in srgb,var(--danger) 25%,var(--border));border-radius:8px;background:var(--danger-soft);color:var(--danger);padding:6px 10px;font:inherit;font-size:.8rem;font-weight:700;cursor:pointer}
 .btn-excluir:hover{background:#F9D5D5}.btn-excluir:focus-visible{outline:3px solid rgba(220,38,38,.2);outline-offset:2px}
+
+/* Confirmação de exclusão */
+.modal[hidden]{display:none}.modal{position:fixed;z-index:20;inset:0;display:grid;place-items:center;padding:24px}
+.modal-backdrop{position:absolute;inset:0;border:0;background:rgba(15,23,42,.48);cursor:default}
+.modal-dialog{position:relative;width:min(100%,460px);margin:0;padding:30px;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 24px 56px rgba(15,23,42,.24)}
+.modal-dialog h2{margin:0 0 10px;font-size:1.35rem}.modal-dialog p{margin:0 0 10px;line-height:1.5}.modal-eyebrow{color:var(--danger);font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.modal-dialog label{display:block;margin:22px 0 8px;font-size:.9rem;font-weight:700}.modal-dialog input{width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font:inherit}
+.modal-dialog input:focus{outline:none;border-color:var(--danger);box-shadow:0 0 0 3px rgba(220,38,38,.13)}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}.btn-modal-cancel,.btn-modal-delete{border-radius:8px;padding:10px 14px;font:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
+.btn-modal-cancel{border:1px solid var(--border);background:#fff;color:var(--text)}.btn-modal-delete{border:1px solid var(--danger);background:var(--danger);color:#fff}.btn-modal-delete:disabled{opacity:.45;cursor:not-allowed}.btn-modal-delete:not(:disabled):hover{background:#B91C1C}
+.modal-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border:0;border-radius:7px;background:transparent;color:var(--muted);font-size:1.4rem;line-height:1;cursor:pointer}.modal-close:hover{background:var(--soft);color:var(--text)}
+@media(max-width:520px){.modal{padding:16px}.modal-dialog{padding:26px 20px 20px}.modal-actions{flex-direction:column-reverse}.btn-modal-cancel,.btn-modal-delete{width:100%}}

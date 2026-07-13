@@ -7,6 +7,7 @@ const TIPOS_PERGUNTA = ["single", "multi", "calc", "slider", "boolean", "number"
 const QUIZ = { stepInfo: {}, perguntas: [], ordem: [] };
 const DASHBOARD_CSRF = $("app")?.dataset.csrf || "";
 let periodoAtual = "tudo";
+let leadPendente = null;
 
 const ICON = {
   olho: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
@@ -114,6 +115,7 @@ async function init() {
   await carregarQuiz();
   const periodo = localStorage.getItem("fb_periodo") || "tudo";
   setupFiltros(periodo);
+  configurarModalExclusao();
   carregar(periodo);
 }
 
@@ -399,14 +401,56 @@ function renderLeads(ll) {
     `<tr><td>${escapeHtml(l.nome || "")}</td><td>${escapeHtml(l.email || "")}</td><td>${escapeHtml(l.whatsapp || "")}</td><td>${escapeHtml(l.utm_source || "(direto)")}</td><td class="td-data">${fmtData(l.created_at)}</td><td><button type="button" class="btn-excluir" data-lead-id="${Number(l.id)}" data-lead-nome="${escapeHtml(l.nome || "")}">Excluir</button></td></tr>`).join("");
   box.innerHTML = `<div class="tabela-wrap"><table class="tabela">${head}<tbody>${rows}</tbody></table></div>`;
   box.querySelectorAll(".btn-excluir").forEach((btn) => {
-    btn.addEventListener("click", () => excluirLead(Number(btn.dataset.leadId), btn.dataset.leadNome || "este lead"));
+    btn.addEventListener("click", () => abrirExclusaoLead(Number(btn.dataset.leadId), btn.dataset.leadNome || "este lead"));
   });
 }
 
-async function excluirLead(leadId, nome) {
+function configurarModalExclusao() {
+  const modal = $("delete-modal");
+  const campo = $("delete-confirmation");
+  const form = $("delete-form");
+  if (!modal || !campo || !form) return;
+
+  campo.addEventListener("input", atualizarConfirmacaoExclusao);
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    confirmarExclusaoLead();
+  });
+  modal.querySelectorAll("[data-delete-cancel]").forEach((btn) => {
+    btn.addEventListener("click", fecharModalExclusao);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) fecharModalExclusao();
+  });
+}
+
+function abrirExclusaoLead(leadId, nome) {
   if (!Number.isInteger(leadId) || leadId < 1) return;
-  const alvo = nome ? `o registro de ${nome}` : "este registro";
-  if (!window.confirm(`Excluir ${alvo}? Isso remove também todas as respostas e eventos desta sessão.`)) return;
+  leadPendente = { id: leadId, nome };
+  $("delete-lead-name").textContent = nome || "este registro";
+  $("delete-confirmation").value = "";
+  atualizarConfirmacaoExclusao();
+  $("delete-modal").hidden = false;
+  $("delete-confirmation").focus();
+}
+
+function fecharModalExclusao() {
+  const modal = $("delete-modal");
+  if (modal) modal.hidden = true;
+  leadPendente = null;
+}
+
+function atualizarConfirmacaoExclusao() {
+  const campo = $("delete-confirmation");
+  const submit = $("delete-submit");
+  if (campo && submit) submit.disabled = campo.value.trim().toLowerCase() !== "delete";
+}
+
+async function confirmarExclusaoLead() {
+  if (!leadPendente || $("delete-confirmation").value.trim().toLowerCase() !== "delete") return;
+  const leadId = leadPendente.id;
+  const submit = $("delete-submit");
+  submit.disabled = true;
 
   try {
     const rs = await fetch("../api/lead-delete.php", {
@@ -417,9 +461,11 @@ async function excluirLead(leadId, nome) {
     });
     if (rs.status === 401 || rs.status === 403) throw new Error("sessao");
     if (!rs.ok) throw new Error("status " + rs.status);
+    fecharModalExclusao();
     await carregar(periodoAtual);
   } catch (e) {
     mostrarEstado("Não foi possível excluir o registro. Recarregue a página e tente novamente.");
+    atualizarConfirmacaoExclusao();
   }
 }
 
