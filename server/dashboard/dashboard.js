@@ -5,6 +5,8 @@ const $ = (id) => document.getElementById(id);
 const CORES = ["#2563EB", "#1E3A8A", "#60A5FA", "#EAB308", "#93C5FD", "#0F172A"];
 const TIPOS_PERGUNTA = ["single", "multi", "calc", "slider", "boolean", "number", "textarea"];
 const QUIZ = { stepInfo: {}, perguntas: [], ordem: [] };
+const DASHBOARD_CSRF = $("app")?.dataset.csrf || "";
+let periodoAtual = "tudo";
 
 const ICON = {
   olho: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
@@ -47,6 +49,7 @@ async function carregarQuiz() {
 }
 
 async function carregar(periodo) {
+  periodoAtual = periodo;
   let d;
   try {
     const rs = await fetch("../api/stats.php?periodo=" + encodeURIComponent(periodo), { credentials: "same-origin" });
@@ -391,10 +394,33 @@ function renderLeads(ll) {
   const box = $("leads");
   box.innerHTML = "";
   if (!ll.length) { box.appendChild(el("p", "muted", "Nenhum lead capturado ainda.")); return; }
-  const head = `<thead><tr><th>Nome</th><th>E-mail</th><th>WhatsApp</th><th>Origem</th><th>Data</th></tr></thead>`;
+  const head = `<thead><tr><th>Nome</th><th>E-mail</th><th>WhatsApp</th><th>Origem</th><th>Data</th><th>Ação</th></tr></thead>`;
   const rows = ll.map((l) =>
-    `<tr><td>${escapeHtml(l.nome || "")}</td><td>${escapeHtml(l.email || "")}</td><td>${escapeHtml(l.whatsapp || "")}</td><td>${escapeHtml(l.utm_source || "(direto)")}</td><td class="td-data">${fmtData(l.created_at)}</td></tr>`).join("");
+    `<tr><td>${escapeHtml(l.nome || "")}</td><td>${escapeHtml(l.email || "")}</td><td>${escapeHtml(l.whatsapp || "")}</td><td>${escapeHtml(l.utm_source || "(direto)")}</td><td class="td-data">${fmtData(l.created_at)}</td><td><button type="button" class="btn-excluir" data-lead-id="${Number(l.id)}" data-lead-nome="${escapeHtml(l.nome || "")}">Excluir</button></td></tr>`).join("");
   box.innerHTML = `<div class="tabela-wrap"><table class="tabela">${head}<tbody>${rows}</tbody></table></div>`;
+  box.querySelectorAll(".btn-excluir").forEach((btn) => {
+    btn.addEventListener("click", () => excluirLead(Number(btn.dataset.leadId), btn.dataset.leadNome || "este lead"));
+  });
+}
+
+async function excluirLead(leadId, nome) {
+  if (!Number.isInteger(leadId) || leadId < 1) return;
+  const alvo = nome ? `o registro de ${nome}` : "este registro";
+  if (!window.confirm(`Excluir ${alvo}? Isso remove também todas as respostas e eventos desta sessão.`)) return;
+
+  try {
+    const rs = await fetch("../api/lead-delete.php", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json", "X-FB-CSRF": DASHBOARD_CSRF },
+      body: JSON.stringify({ lead_id: leadId }),
+    });
+    if (rs.status === 401 || rs.status === 403) throw new Error("sessao");
+    if (!rs.ok) throw new Error("status " + rs.status);
+    await carregar(periodoAtual);
+  } catch (e) {
+    mostrarEstado("Não foi possível excluir o registro. Recarregue a página e tente novamente.");
+  }
 }
 
 function renderAbertas(rows) {

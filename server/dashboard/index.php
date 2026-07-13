@@ -21,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $erro = 'Senha incorreta.';
 }
 $auth = !empty($_SESSION['fb_auth']);
+if ($auth && empty($_SESSION['fb_csrf'])) {
+    $_SESSION['fb_csrf'] = bin2hex(random_bytes(32));
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -28,7 +31,7 @@ $auth = !empty($_SESSION['fb_auth']);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FunilBox · Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css?v=10" />
+  <link rel="stylesheet" href="dashboard.css?v=11" />
 </head>
 <body>
 <?php if (!$auth): ?>
@@ -44,7 +47,7 @@ $auth = !empty($_SESSION['fb_auth']);
     <div class="brand"><span class="brand-dot"></span> FunilBox <span class="brand-sep">·</span> <span class="muted">Desempenho do funil</span></div>
     <a class="sair" href="?logout=1">Sair</a>
   </header>
-  <main id="app">
+  <main id="app" data-csrf="<?php echo htmlspecialchars($_SESSION['fb_csrf'], ENT_QUOTES, 'UTF-8'); ?>">
     <div class="filtros" id="filtros">
       <span class="filtros-lbl">Período:</span>
       <button class="filtro" data-p="24h" type="button">24 horas</button>
@@ -136,7 +139,7 @@ $auth = !empty($_SESSION['fb_auth']);
       <div id="recentes" class="recentes-2col"></div>
     </section>
   </main>
-  <script src="dashboard.js?v=12"></script>
+  <script src="dashboard.js?v=13"></script>
 <?php endif; ?>
 </body>
 </html>

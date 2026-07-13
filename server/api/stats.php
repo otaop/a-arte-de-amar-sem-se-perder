@@ -157,7 +157,7 @@ usort($criativos, function ($a, $b) { return $b['sessions'] - $a['sessions']; })
 
 // Lista de leads (PII — só no dashboard autenticado, atrás de senha).
 $leads_lista = $pdo->query(
-    "SELECT nome, email, whatsapp, result_id, utm_source, utm_campaign, created_at
+    "SELECT id, session_id, nome, email, whatsapp, result_id, utm_source, utm_campaign, created_at
      FROM leads$dWhere ORDER BY id DESC LIMIT 100"
 )->fetchAll();
 

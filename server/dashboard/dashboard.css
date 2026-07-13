@@ -179,3 +179,5 @@ a{color:var(--primary)}
 .tabela tbody tr:last-child td{border-bottom:none}
 .tabela tbody tr:hover{background:var(--soft)}
 .td-data{color:var(--muted);font-family:ui-monospace,monospace;font-size:.82rem}
+.btn-excluir{border:1px solid color-mix(in srgb,var(--danger) 25%,var(--border));border-radius:8px;background:var(--danger-soft);color:var(--danger);padding:6px 10px;font:inherit;font-size:.8rem;font-weight:700;cursor:pointer}
+.btn-excluir:hover{background:#F9D5D5}.btn-excluir:focus-visible{outline:3px solid rgba(220,38,38,.2);outline-offset:2px}
